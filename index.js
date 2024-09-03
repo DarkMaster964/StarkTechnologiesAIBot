@@ -1,6 +1,6 @@
 const styles = `
 
-    img {
+     img {
         max-width: 100%;
     }
 
@@ -13,7 +13,8 @@ const styles = `
         right: 1vw;
         width: 12.5vw;
         height: 12.5vw;
-        transition: ease-in-out 0.35s;
+        transition: linear(0 0%, 0 1.8%, 0.01 3.6%, 0.03 6.35%, 0.07 9.1%, 0.13 11.4%, 0.19 13.4%, 0.27 15%, 0.34 16.1%, 0.54 18.35%, 0.66 20.6%, 0.72 22.4%, 0.77 24.6%, 0.81 27.3%, 0.85 30.4%, 0.88 35.1%, 0.92 40.6%, 0.94 47.2%, 0.96 55%, 0.98 64%, 0.99 74.4%, 1 86.4%, 1 100%) 0.35s;
+        z-index: 10000000;
     }
 
     .chatContainerFull {
@@ -26,13 +27,17 @@ const styles = `
         width: 30vw;
         height: min(60vw,95vh);
         transition: ease-in-out 0.1s;
+        z-index: 10000000;
         font-size: min(1.75vw,5vh);
+        overflow-x: hidden;
+        z-index: 1000000000;
     }
 
     .chatBubble {
         display: block;
         position: relative;
         width: 100%;
+        z-index: 10000000;
         height: 30%;
     }
 
@@ -69,6 +74,7 @@ const styles = `
         width: 100%;
         height: 100%;
     }
+        
 
     .chatBackgroundGradient {
         width: 100%;
@@ -86,6 +92,7 @@ const styles = `
         flex-direction: column;
         background: linear-gradient(360deg, #272727 83.5%, #8D8D8D 100%);
         border-radius: 2vw;
+        box-sizing: border-box;
     }
 
     .botInfo {
@@ -98,7 +105,7 @@ const styles = `
         border-top-right-radius: inherit;
         border-bottom: 1px solid white;
     }
-
+    
     .lenaImageDiv {
         position: relative;
         height: 100%;
@@ -159,7 +166,22 @@ const styles = `
         border: none;
     }
 
+    #messageArea p {
+        all: revert;
+    }
+
+    .productDiv * {
+        color: white;
+    }
+
+
+    .prodAiLogoWidget {
+        all: revert;
+        padding: 2px;
+    }
+
     .introductionParagraph {
+        color: white;
         display: flex;
         justify-content: center;
         align-items: flex-start;
@@ -233,6 +255,10 @@ const styles = `
         border: 0;
         border-radius: 1vw;
         z-index: 1;
+        
+        word-wrap: break-word;
+        overflow-wrap: anywhere;
+        
     }
 
     .responseDiv::before {
@@ -307,7 +333,6 @@ const styles = `
 
     .purchaseButton {
         width: 25%;
-        height: 3vw;
         background-color: #545454;
         border-radius: 17px;
         display: flex;
@@ -315,6 +340,8 @@ const styles = `
         align-items: center;
         border: none;
         cursor: pointer;
+        padding-top: 5%;
+        padding-bottom: 5%;
     }
 
     .shoppingCartImage {
@@ -385,7 +412,7 @@ const styles = `
         padding-right: 1.5%;
     }
 
-    .prodAiLogo {
+    .prodAiLogoWidget {
         width: 15%;
         padding-right: 15%;
 
@@ -429,12 +456,326 @@ const styles = `
             width: calc(100% - 1px);
         }
     }
+
+    @media (orientation: portrait)  {
+    
+        
+    
+        .productImage {
+            border-radius: 3vw;
+        }
+    
+        .prodAiLogoWidget {
+            width: 17%;
+            padding-right: 10%;
+        }
+        
+        .providedBy {
+            font-size: 0.9em;
+        }
+        
+        .responseDiv {
+            border-radius: 3vw;
+        }
+    
+        .responseDiv::before {
+            height: calc(100% - 4px);
+            width: calc(100% - 4px);
+            top: 2px;
+            left: 2px;
+            border-radius: 3vw;
+        }
+        
+        .chat {
+            background: linear-gradient(360deg, #272727 87.5%, #8D8D8D 100%);
+        }
+        
+        .botInfo {
+            height: 12.5%;
+            width: 100%;
+            flex-direction: row;
+            display: flex;
+            align-items: center;
+            border-top-left-radius: inherit;
+            border-top-right-radius: inherit;
+            border-bottom: 1px solid white;
+        }
+        
+        .chatBackgroundGradient {
+            display: none;
+        }
+
+        .purchaseButton {
+            width: 25%;
+            background-color: #545454;
+            border-radius: 3vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            cursor: pointer;
+        }
+        
+        
+
+        .chat, .botHeaderContainer, .headerGreeting, .introductionParagraph, .messageArea, .inputArea {
+            font-size: 0.9em; /* Adjust this value to increase text size */
+        }
+        
+        .botInfo {
+                font-size: 1em;
+        }
+        
+        @media (max-height: 675px) {
+            .chat, .botHeaderContainer, .headerGreeting, .introductionParagraph, .messageArea, .inputArea {
+                font-size: 0.82em; /* Adjust this value to increase text size */
+            }
+            
+            .botInfo {
+                font-size: 1.2em;
+            }
+            
+        }
+        
+        @media (max-width: 470px) {
+            @media (max-height: 400px){ 
+                .botInfo {
+                    font-size: 1em;
+                }
+            }
+        }
+
+        .messageArea {
+            display: flex;
+            flex-direction: column;
+            color: white;
+            font-family: "Roboto", sans-serif;
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            margin-bottom: 17.55dvh;
+            padding-top: 1.25%;
+            min-height: 70%;
+            box-sizing: border-box;
+            font-weight: 200;
+            line-height: 1.25;
+            font-size: 1.1em;
+        }
+        
+
+        .chatContainerFull {
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            width: 100%; /* Adjust width for a near fullscreen effect */
+            height: 100%; /* Adjust height for a near fullscreen effect */
+            bottom: 0;  /* Center vertically with space around */
+            right: 0; /* Center horizontally with space around */
+            left: 0; /* Center horizontally with space around */
+            font-size: min(4vw, 5vh);
+            border-radius: 0; /* Maintain rounded edges */
+            transition: bottom ease-in-out 0.1s, right ease-in-out 0.1s;
+            z-index: 10000000;
+            overflow: hidden;
+        }
+    
+
+        .chatWrapper {
+            display: none;
+            top: 0;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            border-radius: 0;
+            // overflow: hidden;
+        }
+        
+
+        .onlineStatus {
+            position: absolute;
+            width: 2vw; /* Increase the size of the dot */
+            height: 2vw; /* Make sure it's a circle */
+            border-radius: 50%;
+            background-color: #27C001;
+            left: 35%; /* Adjust this value to position the dot correctly */
+            bottom: 1%; /* Adjust this value to position the dot correctly */
+            z-index: 2;
+        }
+
+        .chat {
+            border-radius: 0vw; /* Match border radius with container */
+            height: 100%; /* Added to ensure full height */
+            width: 100%; /* Added to ensure full width */
+        }
+
+        .sendButton {
+            position: absolute;
+            width: 5dvh; /* Increase the size of the button */
+            height: 5dvh; /* Maintain square aspect ratio */
+            bottom: 9.5vh; /* Adjust this value to position it slightly above the bottom edge */
+            right: 6.25vw; /* Adjust this value to position it slightly to the left of the right edge */
+            margin: 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background: linear-gradient(126.82deg, #CE6EE9 14.65%, #007CFB 50.42%, #FFE500 86.19%);
+            border-width: 0;
+        }
+
+        .sendImg {
+            width: 70%; /* Adjust the size of the image inside the button */
+            transform: translate(-7.5%, 7.5%);
+        }
+
+        .inputArea {
+            height: 12dvh;  /* Increase the height for better usability */
+            font-size: max(16px, 0.9em);  /* Increase font size for better readability */
+            padding: 8px;  /* Add padding to give more space inside the input box */
+        }
+
+        .inputDiv {
+            height: 17.5dvh;  /* Ensure the input div expands to fit content */
+            padding-bottom: 2vh;
+            box-sizing: border-box;
+        }
+
+        .chatContainerBubble {
+            width: 25vw; /* Increase the width for mobile */
+            height: 25vw; /* Increase the height for mobile */
+            
+            bottom: 5vh;
+            right: 5vw;
+        }
+
+        .lenaCircle {
+            width: 60%; /* Increase the size of the Lena circle */
+        }
+
+        .blackCircle {
+            width: 65%; /* Adjust the black circle size */
+        }
+
+        .circleGradient {
+            width: 100%; /* Ensure the gradient fits the new size */
+        }
+
+        .chatBubble {
+            height: 100%; /* Ensure the bubble takes the full height of the container */
+            z-index: 10000000;
+        }
+        
+        .productDiv {
+            border-radius: 3vw;
+        }
+        
+        .messageDiv {
+            border-radius: 3vw;
+        }
+
+    }
+
+    @media (orientation: landscape) {
+        @media (max-height: 500px) {
+            
+            .headerGreeting {
+                padding-top: 5%;
+            }
+            
+            .productDiv {
+                width: 45%;
+            }
+            
+            .chatBackgroundGradient {
+                display: none;
+            }
+            
+            .chatContainerFull {
+                width: 100%;
+                height: 100%;
+                bottom: 0;
+                right: 0;
+                font-size: 2em;
+            }
+            
+            .chatWrapper {
+                width: 100%;
+                height: 100%;
+            }
+            
+            .chat {
+                width: 100%;
+                height: 100%;
+                border-radius: 0;
+            }
+            
+            .onlineStatus {
+                width: 1.5%;
+                height: 1.5%;
+                left: 39%;
+                bottom: 0;
+            }
+            
+            .responseDiv {
+                margin-top: 2%;
+            }
+            
+            .messageDiv {
+                margin-top: 2%;
+            }
+            
+            .productInfoDiv {
+                font-size: 1.35em;
+            }
+            
+            
+            .messageArea {
+                margin-bottom: 22.5%;
+                min-height: 60%;
+                padding-top: 1.25%;
+                box-sizing: border-box;
+            }
+            
+            .botInfo {
+                height: 17.5%;
+            }
+            
+            .inputDiv {
+                height: 22.5%;
+            }
+            
+            .inputArea {
+                padding-top: 1%;
+            }
+            
+            .prodAiLogoWidget {
+                width: 10%;
+                padding-right: 7.5%;
+            }
+            
+            .sendButton {
+                width: 4.25dvw;
+                height: 4.25dvw;
+                right: 5dvw;
+                bottom: 10.75dvh;
+            }
+            
+            .waveEmoji {
+                font-size: 1em;
+            }
+        }
+    }
 `;
 
 
 const html = `
 
-        <div class="chatBubble" id="chatBubble">
+      <div class="chatBubble" id="chatBubble">
             <img src="https://i.postimg.cc/0NptLF4d/Circle-Linear-Gradient.png" class="circleGradient">
             <img src="https://i.postimg.cc/Y4DNz6C8/Black-Circle.png" class="blackCircle" id="blackCircle">
             <img src="https://i.postimg.cc/Jsq5GVwf/Lena-Circle.png" class="lenaCircle" id="lenaCircle">
@@ -466,8 +807,10 @@ const html = `
                 <div class="messageArea" id="messageArea">
 
                     <div class="responseDiv">
-                        Dobrodošli na ProdAi!
-                        Kako mogu da vam pomognem?
+                        <p>
+                        Dobrodošli u ProdAi!
+                        Ja sam AI asistent prodaje. Kako mogu da vam pomognem?
+                        </p>
                     </div>
 
                     
@@ -481,7 +824,7 @@ const html = `
                     <textarea type="text" class="inputArea" placeholder="Upišite poruku..." id="userInput"></textarea>
                     <div class="manufacturer">
                         <div class="providedBy">Omogućeno sa</div>
-                        <img src="https://i.postimg.cc/8FXVhzfM/Prod-Ai-Logo.png" class="prodAiLogo">
+                        <img src="https://i.postimg.cc/8FXVhzfM/Prod-Ai-Logo.png" class="prodAiLogoWidget" onclick="window.location.href='https://prod-ai.com';">
                     </div>
 
                     <button class="sendButton" id="sendButton">
